@@ -1,26 +1,248 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+*{
+  font-family: Outfit;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.font-ovo {
+  font-family: 'Ovo', serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.font-outfit {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* .lightHover {
+  color: #fcf4ff;
+} */
+
+/* .darktHover {
+  color: #2a004a;
+}
+
+.darkTheme {
+  color: #11001F;
+} */
+
+.hover-black-shadow:hover {
+  box-shadow: 4px 4px 0 #000;
+}
+
+.hover-white-shadow:hover {
+  box-shadow: 4px 4px 0 #fff;
+}
+
+.grid-cols-auto {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  color: black;
 }
+
+.dark body {
+  background-color: #11001F;
+  color: white;
+}
+
+.dark a.contact-button {
+  background-color: transparent !important;
+  border-color: white !important;
+  color: white !important;
+}
+
+
+/* Light mode default */
+.service-card h3,
+.service-card p,
+.service-card .read-more-link {
+  color: #2a004a;
+  transition: color 0.3s ease;
+}
+
+/* Light mode hover (on card) */
+.service-card:hover h3,
+.service-card:hover p,
+.service-card:hover .read-more-link {
+  color: white;
+}
+
+/* Dark mode (always white) */
+.dark .service-card h3,
+.dark .service-card p,
+.dark .service-card .read-more-link {
+  color: white;
+}
+
+
+/* === Default Light Mode === */
+.info-card {
+  border-color: #9ca3af; /* gray-400 */
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.info-card h3 {
+  color: #374151; /* gray-700 */
+  transition: color 0.3s ease;
+}
+
+.info-card p {
+  color: #4b5563; /* gray-600 */
+  transition: color 0.3s ease;
+}
+
+/* === Hover Light Mode === */
+.info-card:hover {
+  background-color: #fcf4ff;
+}
+
+.info-card:hover h3,
+.info-card:hover p {
+  color: #2a004a; /* deep purple on hover (readable) */
+}
+
+/* === Dark Mode === */
+.dark .info-card {
+  border-color: #ffffff;
+  background-color: transparent;
+}
+
+.dark .info-card:hover {
+  background-color: rgba(42, 0, 74, 0.5); /* #2a004a/50 */
+}
+
+.dark .info-card h3 {
+  color: #ffffff;
+}
+
+.dark .info-card p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Hover stays white in dark */
+.dark .info-card:hover h3,
+.dark .info-card:hover p {
+  color: #ffffff;
+}
+
+
+/* === Light mode === */
+.show-more-btn {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* === Dark mode === */
+.dark .show-more-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+/* === Dark mode hover === */
+.dark .show-more-btn:hover {
+  background-color: #2a004a;
+}
+
+
+/* Default light mode — background image shows */
+.contact-form-section {
+  background-image: url('/footer-bg-color.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90% auto;
+}
+
+/* Dark mode — remove background completely */
+.dark .contact-form-section {
+  background-image: none;
+  background-color: transparent;
+}
+
+
+/* === Shared form field style === */
+.form-field {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  outline: none;
+  border: 1px solid #9ca3af; /* gray-400 */
+  background-color: #ffffff;
+  color: #2a004a;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* === Dark Mode Input Fields === */
+.dark .form-field {
+  background-color: rgba(42, 0, 74, 0.3); /* #2a004a/30 */
+  border-color: rgba(255, 255, 255, 0.9);
+  color: #ffffff;
+}
+
+/* === Submit Button === */
+.submit-btn {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #000000;
+}
+
+/* === Dark Mode Button === */
+.dark .submit-btn {
+  background-color: transparent;
+  border: 1px solid #ffffff;
+}
+
+.dark .submit-btn:hover {
+  background-color: #2a004a;
+}
+
+
+/* === Navbar default === */
+.main-navbar {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* === When scrolled === */
+.main-navbar.scrolled {
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.7); /* light mode default */
+}
+
+/* === Dark mode override === */
+.dark .main-navbar.scrolled {
+  background-color: #11001F; /* solid dark */
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+/* === Light Mode Button Styling === */
+.contact-nav-btn {
+  color: #2a004a;
+  border: 1px solid #2a004a; /* Stronger purple border */
+}
+
+/* === Hover effect for light mode (optional) */
+.contact-nav-btn:hover {
+  background-color: #fcf4ff;
+}
+
+/* === Dark Mode Styling === */
+.dark .contact-nav-btn {
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* === Dark Mode Hover (optional) */
+.dark .contact-nav-btn:hover {
+  background-color: rgba(42, 0, 74, 0.5); /* #2a004a/50 */
+}
+
+
