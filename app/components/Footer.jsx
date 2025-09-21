@@ -2,7 +2,7 @@ import { assets } from "@/assets/assets";
 import Image from "next/image";
 import React from "react";
 
-const Footer = ({ isDarkMode }) => {
+const Footer = () => {
   return (
     <footer className="relative border-t border-gray-200 dark:border-gray-700 px-[8%] py-8 text-sm">
       {/* Gradient background */}
@@ -11,17 +11,24 @@ const Footer = ({ isDarkMode }) => {
       <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
         {/* Left - Name + Email */}
         <div className="text-center sm:text-left">
-          <h2 className="text-lg font-bold bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-600  bg-clip-text text-transparent">
+          <h2 className="text-lg font-bold bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
             Thu Ta Zaw
           </h2>
           <a
             href="mailto:kuku.zayn@gmail.com"
             className="flex items-center justify-center sm:justify-start gap-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition mt-2"
           >
+            {/* Light mode mail icon */}
             <Image
-              src={isDarkMode ? assets.mail_icon_dark : assets.mail_icon}
+              src={assets.mail_icon}
               alt="mail"
-              className="w-4"
+              className="w-4 block dark:hidden"
+            />
+            {/* Dark mode mail icon */}
+            <Image
+              src={assets.mail_icon_dark}
+              alt="mail"
+              className="w-4 hidden dark:block"
             />
             kuku.zayn@gmail.com
           </a>
@@ -33,7 +40,7 @@ const Footer = ({ isDarkMode }) => {
             <a
               href="https://github.com/itzThuta/"
               target="_blank"
-              className="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
             >
               GitHub
             </a>
@@ -42,7 +49,7 @@ const Footer = ({ isDarkMode }) => {
             <a
               href="https://www.linkedin.com/in/thu-ta-zaw-ab788a34a/"
               target="_blank"
-              className="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
             >
               LinkedIn
             </a>
@@ -51,7 +58,7 @@ const Footer = ({ isDarkMode }) => {
             <a
               href="https://github.com/itzThuta"
               target="_blank"
-              className="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
             >
               Instagram
             </a>

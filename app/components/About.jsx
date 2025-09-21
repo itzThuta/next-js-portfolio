@@ -46,35 +46,44 @@ const About = ({ isDarkMode }) => {
       </p>
 
       {/* Info cards */}
-      <ul className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl w-full">
-        {infoList.map(({ icon, iconDark, title, description }, index) => (
-          <li
-            key={index}
-            className="rounded-2xl border border-slate-200 dark:border-white/10 
-                       bg-white/80 dark:bg-slate-900/40 p-6 shadow-sm 
-                       hover:shadow-lg hover:-translate-y-1 transition-all duration-300
-                       group"
-          >
-            <div className="flex justify-center mb-4">
-              <div className="p-3 rounded-xl bg-gradient-to-tr from-sky-100 to-blue-100 
-                              dark:from-sky-900/40 dark:to-blue-900/30 
-                              group-hover:scale-105 transition">
-                <Image
-                  src={isDarkMode ? iconDark : icon}
-                  alt={title}
-                  className="w-7 h-7"
-                />
-              </div>
-            </div>
-            <h3 className="text-lg font-semibold mb-2 bg-gradient-to-r from-sky-500 to-indigo-600 bg-clip-text text-transparent">
-              {title}
-            </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              {description}
-            </p>
-          </li>
-        ))}
-      </ul>
+      {/* Info cards */}
+<ul className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl w-full">
+  {infoList.map(({ icon, iconDark, title, description }, index) => (
+    <li
+      key={index}
+      className="rounded-2xl border border-slate-200 dark:border-white/10 
+                 bg-white/80 dark:bg-slate-900/40 p-6 shadow-sm 
+                 hover:shadow-lg hover:-translate-y-1 transition-all duration-300
+                 group"
+    >
+      <div className="flex justify-center mb-4">
+        <div className="p-3 rounded-xl bg-gradient-to-tr from-sky-100 to-blue-100 
+                        dark:from-sky-900/40 dark:to-blue-900/30 
+                        group-hover:scale-105 transition">
+          {/* Light mode icon */}
+          <Image
+            src={icon}
+            alt={title}
+            className="w-7 h-7 block dark:hidden"
+          />
+          {/* Dark mode icon */}
+          <Image
+            src={iconDark}
+            alt={title}
+            className="w-7 h-7 hidden dark:block"
+          />
+        </div>
+      </div>
+      <h3 className="text-lg font-semibold mb-2 bg-gradient-to-r from-sky-500 to-indigo-600 bg-clip-text text-transparent">
+        {title}
+      </h3>
+      <p className="text-sm text-slate-600 dark:text-slate-400">
+        {description}
+      </p>
+    </li>
+  ))}
+</ul>
+
 
       {/* Tools */}
       <h4 className="mt-16 mb-6 text-lg font-semibold text-sky-500 dark:text-sky-400">

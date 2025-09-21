@@ -34,21 +34,39 @@ export default function Header() {
       phase: Math.random() * Math.PI * 2,
     }));
 
+    const isDark = () =>
+      document.documentElement.classList.contains("dark") ||
+      window.matchMedia?.("(prefers-color-scheme: dark)")?.matches;
+
     let rafId;
     const draw = () => {
       const w = canvas.clientWidth || 1;
       const h = canvas.clientHeight || 1;
       ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = "rgba(255,255,255,0.9)";
+
+      // Flake colors: black/gray in light mode, white in dark mode
+      const fillColor = isDark()
+        ? "rgba(255,255,255,0.95)" // dark mode
+        : "rgba(30,30,30,0.85)";   // light mode
+      const strokeColor = isDark()
+        ? "rgba(0,0,0,0.15)"
+        : "rgba(255,255,255,0.1)";
+
+      ctx.fillStyle = fillColor;
+      ctx.strokeStyle = strokeColor;
+      ctx.lineWidth = 0.5;
+
       for (const f of flakes) {
         f.y += f.vy;
         f.x += Math.cos((f.phase += 0.015)) * 0.3;
         if (f.y > h + 6) f.y = -6;
         if (f.x < -6) f.x = w + 6;
         if (f.x > w + 6) f.x = -6;
+
         ctx.beginPath();
         ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
         ctx.fill();
+        ctx.stroke();
       }
       rafId = requestAnimationFrame(draw);
     };
@@ -69,11 +87,13 @@ export default function Header() {
   return (
     <section className="relative min-h-[88vh] flex items-center justify-center px-5 sm:px-6 py-14 sm:py-16 overflow-hidden">
       <style dangerouslySetInnerHTML={{ __html: keyframes }} />
-      {/* Background (fixed same theme) */}
+
+      {/* Background */}
       <div className="absolute inset-0 -z-20 bg-gradient-to-b from-sky-50 via-white to-sky-50 dark:from-[#0b1220] dark:via-[#0b1220] dark:to-[#0b1220]" />
+
       {/* Snow */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
-        <canvas ref={snowRef} className="w-full h-full opacity-70" />
+        <canvas ref={snowRef} className="w-full h-full" />
       </div>
 
       {/* Content */}
@@ -111,7 +131,7 @@ export default function Header() {
           Based in Bangkok • 1.5 years experience • open to remote roles.
         </p>
 
-        {/* Buttons — shorter on mobile */}
+        {/* Buttons */}
         <div
           className="mt-7 flex flex-col sm:flex-row justify-center items-center gap-2.5 sm:gap-3"
           style={{ animation: "fadeInUp 560ms 260ms ease-out both" }}

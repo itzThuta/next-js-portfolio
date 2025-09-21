@@ -62,8 +62,22 @@ const Navbar = () => {
           </a>
 
           {/* Mobile menu toggle */}
-          <button className="md:hidden" onClick={openMenu} aria-label="Open menu">
-            <Image src={assets.menu_white} alt="menu" className="w-6 h-6" />
+          {/* Mobile menu toggle */}
+          <button
+            className="md:hidden"
+            onClick={openMenu}
+            aria-label="Open menu"
+          >
+            <Image
+              src={assets.menu_black} // black icon for light mode
+              alt="menu"
+              className="w-6 h-6 block dark:hidden"
+            />
+            <Image
+              src={assets.menu_white} // white icon for dark mode
+              alt="menu"
+              className="w-6 h-6 hidden dark:block"
+            />
           </button>
         </div>
       </div>
@@ -77,7 +91,11 @@ const Navbar = () => {
                     ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         {/* Close button */}
-        <button className="self-end" onClick={closeMenu} aria-label="Close menu">
+        <button
+          className="self-end"
+          onClick={closeMenu}
+          aria-label="Close menu"
+        >
           <Image src={assets.close_white} alt="close" className="w-5 h-5" />
         </button>
 
