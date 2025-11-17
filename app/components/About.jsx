@@ -19,7 +19,7 @@ const About = () => {
       </h2>
 
       <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start w-full max-w-6xl">
-        <div className="rounded-[32px] border border-white/10 bg-white/[0.04] p-8 text-left shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-10">
+        <div className="rounded-[32px] border border-white/10 bg-[#040b1a]/90 p-8 text-left shadow-2xl shadow-black/50 backdrop-blur-xl sm:p-10">
           <p className="text-lg font-semibold text-slate-200">
             A product-minded developer crafting calm, human-focused experiences.
           </p>
@@ -42,7 +42,7 @@ const About = () => {
             ].map((item) => (
               <div
                 key={item.label}
-                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur"
+                className="rounded-2xl border border-white/10 bg-[#020715]/70 px-4 py-3 shadow-inner shadow-black/40"
               >
                 <p className="text-[11px] uppercase tracking-[0.35em] text-slate-300">
                   {item.label}
@@ -59,7 +59,7 @@ const About = () => {
             {infoList.map(({ icon, iconDark, title, description }, index) => (
               <li
                 key={index}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6 text-left shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:shadow-2xl"
+                className="rounded-2xl border border-white/10 bg-[#020715]/70 p-6 text-left shadow-lg shadow-black/40 transition hover:-translate-y-1 hover:shadow-2xl"
               >
                 <div className="mb-4 inline-flex items-center justify-center rounded-2xl bg-gradient-to-tr from-sky-900/40 to-blue-900/20 p-3">
                   <Image src={iconDark || icon} alt={title} className="h-7 w-7" />
@@ -70,7 +70,7 @@ const About = () => {
             ))}
           </ul>
 
-          <div className="rounded-3xl border border-dashed border-white/20 p-6 text-left">
+          <div className="rounded-3xl border border-dashed border-white/20 bg-[#020715]/70 p-6 text-left">
             <p className="text-xs uppercase tracking-[0.4em] text-slate-300">
               Toolbox
             </p>
