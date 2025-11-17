@@ -30,79 +30,122 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative w-full px-[8%] py-20 scroll-mt-20 flex flex-col items-center text-center"
+      className="relative w-full px-[8%] py-24 scroll-mt-20 flex flex-col items-center text-center"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-sky-50 via-white to-sky-50 dark:from-[#0b1220] dark:via-[#0b1220] dark:to-[#0b1220]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#01030a] via-[#030a18] to-[#02020a]" />
+      <div className="absolute inset-x-0 top-0 -z-10 h-72 blur-3xl opacity-60 bg-[radial-gradient(circle_at_10%_20%,rgba(14,165,233,0.35),transparent_55%),radial-gradient(circle_at_90%_0%,rgba(37,99,235,0.35),transparent_45%)]" />
 
-      {/* Heading */}
-      <h4 className="text-sm uppercase tracking-widest text-sky-500 dark:text-sky-400 font-semibold">
+      <h4 className="text-sm font-semibold uppercase tracking-[0.5em] text-sky-300">
         Contact
       </h4>
       <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
-        Get in Touch
+        Let’s build something calm
       </h2>
-      <p className="mt-4 max-w-2xl text-slate-600 dark:text-slate-300 text-base leading-relaxed">
-        Have a project or an idea? Let’s talk.  
-        I’m always open to{" "}
-        <span className="text-sky-600 dark:text-sky-400 font-medium">
-          new opportunities
-        </span>{" "}
-        and creative collaborations.
+      <p className="mt-4 max-w-2xl leading-relaxed text-slate-300">
+        I reply within 24 hours. Tell me about your product, your constraints, and the outcome you&apos;re targeting.
       </p>
 
-      {/* Form */}
-      <form
-        onSubmit={onSubmit}
-        className="mt-10 w-full max-w-2xl text-left space-y-6"
-      >
-        <div className="grid sm:grid-cols-2 gap-6">
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required
-            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 text-base text-slate-800 dark:text-slate-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 transition"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            required
-            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 text-base text-slate-800 dark:text-slate-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 transition"
-          />
-        </div>
-
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          required
-          rows="6"
-          className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 text-base text-slate-800 dark:text-slate-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 transition resize-none"
-        ></textarea>
-
-        {/* Submit Button */}
-        <div className="flex justify-center">
-          <button
-            type="submit"
-            className="group flex items-center gap-2 rounded-full px-8 py-3 text-base font-semibold text-white bg-sky-600 hover:bg-sky-700 active:scale-[0.98] transition shadow-md"
-          >
-            Send Message
-            <Image
-              src={assets.right_arrow_white}
-              alt="arrow"
-              className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-            />
-          </button>
-        </div>
-
-        {/* Result message */}
-        {result && (
-          <p className="mt-4 text-center text-sm text-slate-700 dark:text-slate-300">
-            {result}
+      <div className="mt-12 grid w-full max-w-6xl gap-8 text-left lg:grid-cols-[0.8fr_1fr]">
+        <div className="rounded-[32px] border border-white/10 bg-white/5 p-8 shadow-2xl shadow-black/40 backdrop-blur-xl">
+          <p className="text-xs uppercase tracking-[0.4em] text-slate-300">
+            Availability
           </p>
-        )}
-      </form>
+          <p className="mt-2 text-2xl font-semibold text-white">
+            Open for freelance & full-time remote roles.
+          </p>
+          <div className="mt-6 space-y-5 text-slate-300">
+            {[
+              { label: "Email", value: "kuku.zayn@gmail.com" },
+              { label: "WhatsApp", value: "+66 800 389 360" },
+              { label: "Location", value: "Bangkok · UTC+7" },
+            ].map((item) => (
+              <div key={item.label}>
+                <p className="text-[11px] uppercase tracking-[0.35em] text-slate-400">
+                  {item.label}
+                </p>
+                <p className="text-base font-semibold text-white">{item.value}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 flex gap-4">
+            {["GitHub", "LinkedIn", "Instagram"].map((net) => (
+              <a
+                key={net}
+                href={
+                  net === "GitHub"
+                    ? "https://github.com/itzThuta/"
+                    : net === "LinkedIn"
+                    ? "https://www.linkedin.com/in/thu-ta-zaw-ab788a34a/"
+                    : "https://www.instagram.com/"
+                }
+                target="_blank"
+                className="flex-1 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-center text-sm font-semibold text-slate-200 transition hover:-translate-y-1"
+              >
+                {net}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <form
+          onSubmit={onSubmit}
+          className="space-y-6 rounded-[32px] border border-white/10 bg-white/5 p-8 shadow-2xl shadow-black/40 backdrop-blur-xl"
+        >
+          <div className="grid gap-6 sm:grid-cols-2">
+            <label className="text-sm font-semibold text-slate-300">
+              Name
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                required
+                className="mt-2 w-full rounded-2xl border border-white/10 bg-[#050b16] px-4 py-3 text-base text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/60"
+              />
+            </label>
+            <label className="text-sm font-semibold text-slate-300">
+              Email
+              <input
+                type="email"
+                name="email"
+                placeholder="hello@email.com"
+                required
+                className="mt-2 w-full rounded-2xl border border-white/10 bg-[#050b16] px-4 py-3 text-base text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/60"
+              />
+            </label>
+          </div>
+          <label className="block text-sm font-semibold text-slate-300">
+            How can I help you?
+            <textarea
+              name="message"
+              placeholder="Describe your project, timeline, and goals."
+              required
+              rows="6"
+              className="mt-2 w-full resize-none rounded-2xl border border-white/10 bg-[#050b16] px-4 py-3 text-base text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/60"
+            />
+          </label>
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm text-slate-400">
+              I usually respond within 1 business day.
+            </p>
+            <button
+              type="submit"
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition hover:-translate-y-0.5"
+            >
+              Send message
+              <Image
+                src={assets.right_arrow_white}
+                alt="arrow"
+                className="h-5 w-5 transition-transform group-hover:translate-x-1"
+              />
+            </button>
+          </div>
+
+          {result && (
+            <p className="text-sm font-medium text-slate-300">{result}</p>
+          )}
+        </form>
+      </div>
     </section>
   );
 };

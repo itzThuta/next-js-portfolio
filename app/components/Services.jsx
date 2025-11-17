@@ -1,86 +1,58 @@
 import { assets, serviceData } from "@/assets/assets";
-import React from "react";
 import Image from "next/image";
+import React from "react";
 
 const Services = () => {
   return (
     <section
       id="services"
-      className="relative w-full px-[8%] py-20 scroll-mt-20 flex flex-col items-center text-center"
+      className="relative w-full px-[8%] py-24 scroll-mt-20 flex flex-col items-center text-center overflow-hidden"
     >
-      {/* Background gradient (consistent theme) */}
-      <div
-        className="absolute inset-0 -z-10 bg-gradient-to-b 
-                   from-sky-50 via-white to-white 
-                   dark:from-[#0b1220] dark:via-[#0b1220] dark:to-[#0b1220]"
-      />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#010208] via-[#050b16] to-[#020711]" />
+      <div className="absolute inset-0 -z-10 opacity-60 blur-3xl bg-[radial-gradient(circle_at_10%_20%,rgba(14,165,233,0.22),transparent_55%),radial-gradient(circle_at_90%_10%,rgba(56,189,248,0.25),transparent_50%)]" />
 
-      {/* Headings */}
-      <h4 className="text-sm uppercase tracking-widest text-sky-500 dark:text-sky-400 font-semibold">
-        What I Offer
-      </h4>
-      <h2
-        className="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight 
-                   bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 
-                   bg-clip-text text-transparent"
-      >
-        My Services
+      <p className="text-sm uppercase tracking-[0.5em] text-slate-400">
+        What I do
+      </p>
+      <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
+        Product-focused services
       </h2>
-
-      {/* Intro paragraph */}
-      <p className="mt-6 max-w-2xl mx-auto text-slate-600 dark:text-slate-300 leading-relaxed">
-        I build modern web and mobile apps using{" "}
-        <span className="text-sky-500 dark:text-sky-400 font-semibold">
-          Flutter
-        </span>{" "}
-        and the{" "}
-        <span className="text-blue-600 dark:text-blue-400 font-semibold">
-          MERN stack
-        </span>
-        , with a focus on responsive UI, full-stack solutions, and smooth user
-        experiences. I also offer{" "}
-        <span className="text-indigo-600 dark:text-indigo-400 font-semibold">
-          UI/UX design support
-        </span>{" "}
-        to bring your ideas to life.
+      <p className="mt-6 max-w-3xl leading-relaxed text-slate-300">
+        From research to release, I help teams design performant interfaces, build resilient Flutter apps,
+        and craft backend systems that scale with the product roadmap.
       </p>
 
-      {/* Service cards */}
-      <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
+      <div className="mt-14 grid w-full max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-3">
         {serviceData.map(({ icon, title, description, link }, index) => (
-          <div
+          <article
             key={index}
-            className="group rounded-2xl border border-slate-200 dark:border-white/10 
-                       bg-white/90 dark:bg-slate-900/40 p-8 shadow-sm 
-                       hover:-translate-y-2 hover:shadow-lg transition-all duration-300
-                       flex flex-col items-center text-center"
+            className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04] p-8 text-left shadow-2xl shadow-black/40 backdrop-blur-xl transition hover:-translate-y-2"
           >
-            {/* Centered icon */}
-            <div
-              className="flex items-center justify-center w-16 h-16 rounded-2xl 
-                         bg-gradient-to-tr from-sky-100 to-blue-100 
-                         dark:from-sky-900/40 dark:to-blue-900/30 mb-5 
-                         group-hover:scale-110 transition"
-            >
-              <Image src={icon} alt={title} className="w-8 h-8" />
+            <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-indigo-500/10 opacity-0 transition group-hover:opacity-100" />
+            <div className="relative flex flex-col gap-4">
+              <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-sky-900/40 to-blue-900/10 shadow-inner shadow-white/10">
+                <Image src={icon} alt={title} className="w-7 h-7" />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.35em] text-slate-400">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-2 text-xl font-semibold text-white">
+                  {title}
+                </h3>
+              </div>
+              <p className="text-sm leading-relaxed text-slate-300">
+                {description}
+              </p>
+              <a
+                href={link}
+                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-sky-300"
+              >
+                Read more
+                <Image src={assets.right_arrow} alt="arrow" className="w-4 h-4" />
+              </a>
             </div>
-
-            <h3 className="text-lg font-semibold mb-2 bg-gradient-to-r from-sky-500 to-indigo-600 bg-clip-text text-transparent">
-              {title}
-            </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              {description}
-            </p>
-
-            <a
-              href={link}
-              className="mt-5 inline-flex items-center justify-center gap-2 text-sm font-medium 
-                         text-sky-600 dark:text-sky-400 group-hover:translate-x-1 transition-transform"
-            >
-              Read more
-              <Image alt="arrow" src={assets.right_arrow} className="w-4 h-4" />
-            </a>
-          </div>
+          </article>
         ))}
       </div>
     </section>

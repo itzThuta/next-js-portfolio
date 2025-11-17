@@ -89,19 +89,19 @@ export const workData = [
     title: "Frontend project",
     description: "Web Design",
     bgImage: "/work-1.png",
-    category: "Frontend", // ✅ add this
+    category: "Frontend",
   },
   {
     title: "Geo based app",
     description: "Mobile App",
     bgImage: "/work-2.png",
-    category: "Mobile", // ✅ add this
+    category: "Mobile",
   },
   {
     title: "UI/UX designing",
     description: "UI/UX Design",
     bgImage: "/work-4.png",
-    category: "UI/UX", // ✅ add this
+    category: "UI/UX",
   },
 ];
 
@@ -127,7 +127,7 @@ export const projectsData = [
     bgImage: "/expire_sense.png",
     slug: "geo-based-app",
     tech: ["Flutter", "Firebase"],
-    liveUrl: "https://your-geo-app-demo.com",
+    liveUrl: null,
     githubUrl: "https://github.com/geo-app",
     device: "phone",
   },

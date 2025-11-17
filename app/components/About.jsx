@@ -2,105 +2,91 @@ import { infoList, toolsData } from "@/assets/assets";
 import Image from "next/image";
 import React from "react";
 
-const About = ({ isDarkMode }) => {
+const About = () => {
   return (
     <section
       id="about"
-      className="relative w-full px-[8%] py-20 scroll-mt-20 flex flex-col items-center text-center"
+      className="relative w-full px-[8%] py-24 scroll-mt-20 flex flex-col items-center text-center"
     >
-      {/* Keep the same smooth background as other sections */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b 
-                      from-sky-50 via-white to-white 
-                      dark:from-[#0b1220] dark:via-[#0b1220] dark:to-[#0b1220]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#030614] via-[#040915] to-[#01030a]" />
+      <div className="absolute inset-x-0 top-0 -z-10 h-72 blur-3xl opacity-60 bg-[radial-gradient(circle_at_10%_20%,rgba(14,165,233,0.25),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(99,102,241,0.25),transparent_45%)]" />
 
-      {/* Headings */}
-      <h4 className="text-sm uppercase tracking-widest text-sky-500 dark:text-sky-400 font-semibold">
+      <h4 className="text-sm font-semibold uppercase tracking-[0.5em] text-sky-300">
         Introduction
       </h4>
-      <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold 
-                     bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 
-                     bg-clip-text text-transparent">
+      <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
         About Me
       </h2>
 
-      {/* Bio */}
-      <p className="mt-6 max-w-2xl text-slate-600 dark:text-slate-300 leading-relaxed">
-        I’m a{" "}
-        <span className="font-semibold text-sky-500 dark:text-sky-400">
-          Flutter & MERN Stack Developer
-        </span>{" "}
-        with 1.5 years of hands-on experience building real-world apps, APIs, and
-        responsive UIs.
-        <br />
-        <br />
-        Alongside coding, I’m also growing as a{" "}
-        <span className="font-semibold text-blue-600 dark:text-blue-400">
-          Junior UI/UX Designer
-        </span>
-        , focusing on smooth user flows and clean design. I’m passionate about
-        creating user-friendly digital products and open to{" "}
-        <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-          remote opportunities
-        </span>{" "}
-        to keep learning and growing.
-      </p>
+      <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start w-full max-w-6xl">
+        <div className="rounded-[32px] border border-white/10 bg-white/[0.04] p-8 text-left shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-10">
+          <p className="text-lg font-semibold text-slate-200">
+            A product-minded developer crafting calm, human-focused experiences.
+          </p>
+          <p className="mt-4 leading-relaxed text-slate-300">
+            I&apos;m a{" "}
+            <span className="font-medium text-sky-300">Flutter & MERN developer</span>{" "}
+            blending UI thinking with engineering discipline. I love translating product ideas into
+            tangible flows—moving from sketches to interactive prototypes to production-ready builds.
+          </p>
+          <p className="mt-4 leading-relaxed text-slate-300">
+            With 1.5 years of iterative experience, I&apos;ve shipped internal dashboards, launch websites,
+            and mobile utilities. I thrive in remote-first teams with clear ownership and feedback loops.
+          </p>
 
-      {/* Info cards */}
-      {/* Info cards */}
-<ul className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl w-full">
-  {infoList.map(({ icon, iconDark, title, description }, index) => (
-    <li
-      key={index}
-      className="rounded-2xl border border-slate-200 dark:border-white/10 
-                 bg-white/80 dark:bg-slate-900/40 p-6 shadow-sm 
-                 hover:shadow-lg hover:-translate-y-1 transition-all duration-300
-                 group"
-    >
-      <div className="flex justify-center mb-4">
-        <div className="p-3 rounded-xl bg-gradient-to-tr from-sky-100 to-blue-100 
-                        dark:from-sky-900/40 dark:to-blue-900/30 
-                        group-hover:scale-105 transition">
-          {/* Light mode icon */}
-          <Image
-            src={icon}
-            alt={title}
-            className="w-7 h-7 block dark:hidden"
-          />
-          {/* Dark mode icon */}
-          <Image
-            src={iconDark}
-            alt={title}
-            className="w-7 h-7 hidden dark:block"
-          />
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {[
+              { label: "Experience", value: "1.5 yrs", detail: "Flutter · MERN" },
+              { label: "Timezone", value: "UTC+7", detail: "Bangkok, remote" },
+              { label: "Focus", value: "UI/UX", detail: "Design systems" },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur"
+              >
+                <p className="text-[11px] uppercase tracking-[0.35em] text-slate-300">
+                  {item.label}
+                </p>
+                <p className="text-xl font-semibold text-white">{item.value}</p>
+                <p className="text-sm text-slate-400">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-8">
+          <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {infoList.map(({ icon, iconDark, title, description }, index) => (
+              <li
+                key={index}
+                className="rounded-2xl border border-white/10 bg-white/5 p-6 text-left shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:shadow-2xl"
+              >
+                <div className="mb-4 inline-flex items-center justify-center rounded-2xl bg-gradient-to-tr from-sky-900/40 to-blue-900/20 p-3">
+                  <Image src={iconDark || icon} alt={title} className="h-7 w-7" />
+                </div>
+                <h3 className="text-lg font-semibold text-white">{title}</h3>
+                <p className="mt-2 text-sm text-slate-400">{description}</p>
+              </li>
+            ))}
+          </ul>
+
+          <div className="rounded-3xl border border-dashed border-white/20 p-6 text-left">
+            <p className="text-xs uppercase tracking-[0.4em] text-slate-300">
+              Toolbox
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-4">
+              {toolsData.map((tool, index) => (
+                <li
+                  key={index}
+                  className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-lg shadow-black/20"
+                >
+                  <Image src={tool} alt="Tool" className="w-6 h-6" />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-      <h3 className="text-lg font-semibold mb-2 bg-gradient-to-r from-sky-500 to-indigo-600 bg-clip-text text-transparent">
-        {title}
-      </h3>
-      <p className="text-sm text-slate-600 dark:text-slate-400">
-        {description}
-      </p>
-    </li>
-  ))}
-</ul>
-
-
-      {/* Tools */}
-      <h4 className="mt-16 mb-6 text-lg font-semibold text-sky-500 dark:text-sky-400">
-        Tools I Use
-      </h4>
-      <ul className="flex flex-wrap justify-center gap-5 max-w-xl">
-        {toolsData.map((tool, index) => (
-          <li
-            key={index}
-            className="flex items-center justify-center w-14 h-14 border border-slate-200 dark:border-slate-700 rounded-xl 
-                       bg-white dark:bg-slate-800 shadow-sm 
-                       hover:-translate-y-1 hover:shadow-md transition duration-300"
-          >
-            <Image src={tool} alt="Tool" className="w-7 h-7" />
-          </li>
-        ))}
-      </ul>
     </section>
   );
 };
